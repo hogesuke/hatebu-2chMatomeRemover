@@ -1,0 +1,21 @@
+{
+  "name": "はてなブックマーク 2chクリーナー",
+  "version": "1.0.1",
+  "manifest_version": 2,
+  "description": "はてなブックマークから2chまとめサイトのエントリーを削除します。",
+  "icons": { "48": "icon48.png",
+             "128": "icon128.png" },
+  "permissions": [
+    "tabs"
+  ],
+  "background": {
+    "scripts": ["jquery-1.9.1.min.js", "background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://b.hatena.ne.jp/*", "http://www.hatena.ne.jp/"],
+      "js": ["jquery-1.9.1.min.js","script.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
