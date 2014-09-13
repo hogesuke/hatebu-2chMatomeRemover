@@ -17,5 +17,8 @@
       "js": ["jquery-1.9.1.min.js","script.js"],
       "run_at": "document_start"
     }
+  ],
+  "web_accessible_resources": [
+    "jquery.min.map"
   ]
 }

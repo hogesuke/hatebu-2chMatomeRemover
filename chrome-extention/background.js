@@ -15,10 +15,16 @@ $(function() {
 			} else if (request.command == "isTargetPage") {
 				chrome.windows.getCurrent(function (currentWindow) {
 					chrome.tabs.query({active: true, windowId: currentWindow.id}, function(activeTabs) {
-						if (activeTabs[0].url.match(new RegExp(request.target))) {
-							sendResponse([true]);
+						if (activeTabs[0].url.match(new RegExp("^http:\/\/b\.hatena\.ne\.jp.*$"))) {
+							sendResponse(['hatebu']);
+						} else if (activeTabs[0].url.match(new RegExp("^http:\/\/www\.hatena\.ne\.jp\/?$"))) {
+							sendResponse(['toppage']);
+						} else if (activeTabs[0].url.match(new RegExp("^http:\/\/b\.hatena\.ne\.jp\/ranking.*$"))) {
+							sendResponse(['ranking']);
+						} else if (activeTabs[0].url.match(new RegExp("^http:\/\/b\.hatena\.ne\.jp\/headline.*$"))) {
+							sendResponse(['headline']);
 						} else {
-							sendResponse([false]);
+							sendResponse(['unknown']);
 						}
 					});
 				});
